@@ -24,7 +24,7 @@ public class ReservationModel {
     @Column(name = "devolution_date")
     private Date devolutionDate;
 
-    private String status= "creado";
+    private String status= "created";
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_car", nullable = false)
