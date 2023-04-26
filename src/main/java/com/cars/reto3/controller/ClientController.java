@@ -2,6 +2,7 @@ package com.cars.reto3.controller;
 
 import ch.qos.logback.core.net.server.Client;
 import com.cars.reto3.dbo.ClientDbo;
+import com.cars.reto3.dbo.ReportClientsDbo;
 import com.cars.reto3.model.CarModel;
 import com.cars.reto3.model.ClientModel;
 import com.cars.reto3.service.ClientService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,12 +37,15 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable int id){
         clientService.eliminar(id);
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public void actualizar(@RequestBody ClientDbo client){
         clientService.actualizar(client);
     }
+
 }

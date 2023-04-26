@@ -35,10 +35,12 @@ public class MessageController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable int id){
         messageService.eliminar(id);
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public void actualizar(@RequestBody MessageDbo message){
         messageService.actualizar(message);
     }

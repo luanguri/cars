@@ -36,11 +36,13 @@ public class ScoreController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable int id){
         scoreService.eliminar(id);
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public void actualizar(@RequestBody ScoreDbo score){
         scoreService.actualizar(score);
     }

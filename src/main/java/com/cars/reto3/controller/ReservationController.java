@@ -1,14 +1,16 @@
 package com.cars.reto3.controller;
 
-import com.cars.reto3.dbo.CarDbo;
+import com.cars.reto3.dbo.ReportClientsDbo;
+import com.cars.reto3.dbo.ReportStatusDbo;
 import com.cars.reto3.dbo.ReservationDbo;
-import com.cars.reto3.model.CarModel;
 import com.cars.reto3.model.ReservationModel;
 import com.cars.reto3.service.ReservationService;
+import com.cars.reto3.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,22 @@ import java.util.Optional;
 public class ReservationController {
     @Autowired
     ReservationService reservationService;
+    @Autowired
+    ClientService clientService;
+
+    @GetMapping("/report-dates/{startDate}/{endDate}")
+    public List<ReservationModel> reportDate(@PathVariable String startDate, @PathVariable String endDate) throws ParseException {
+        return reservationService.reporteDate(startDate,endDate);
+    }
+    @GetMapping("/report-status")
+    public ReportStatusDbo reportStatus(){
+        return reservationService.reportStatus();
+    }
+
+    @GetMapping("/report-clients")
+    public List<ReportClientsDbo> reportClients(){
+        return clientService.reportClients();
+    }
 
     @GetMapping("/all")
     public List<ReservationModel> obtener(){
@@ -36,11 +54,13 @@ public class ReservationController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable int id){
         reservationService.eliminar(id);
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public void actualizar(@RequestBody ReservationDbo res){
         reservationService.actualizar(res);
     }

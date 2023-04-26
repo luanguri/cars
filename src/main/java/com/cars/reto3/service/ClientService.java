@@ -2,12 +2,14 @@ package com.cars.reto3.service;
 
 
 import com.cars.reto3.dbo.ClientDbo;
+import com.cars.reto3.dbo.ReportClientsDbo;
 import com.cars.reto3.model.CarModel;
 import com.cars.reto3.model.ClientModel;
 import com.cars.reto3.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,8 +37,8 @@ public class ClientService {
 
     public void actualizar(ClientDbo clientInput) {
         Optional<ClientModel> clientDB = clientRepositorio.findById(clientInput.getIdClient());
-        ClientModel client = clientDB.get();
         if(clientDB.isPresent()){
+            ClientModel client = clientDB.get();
             if(clientInput.getName()!=null){
                 client.setName(clientInput.getName());
             }
@@ -57,5 +59,16 @@ public class ClientService {
             }
             clientRepositorio.save(client);
         }
+    }
+    public List<ReportClientsDbo> reportClients() {
+        List<ReportClientsDbo> listReportClientDbo = new LinkedList<>();
+        List<ClientModel> listClients = clientRepositorio.reportClient();
+        for (ClientModel client : listClients) {
+            int totalReservas = client.getReservations().size();
+            ReportClientsDbo reportClientsDbo = new ReportClientsDbo(totalReservas,client);
+            listReportClientDbo.add(reportClientsDbo);
+        }
+
+        return listReportClientDbo;
     }
 }
