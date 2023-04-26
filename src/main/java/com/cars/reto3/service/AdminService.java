@@ -21,4 +21,8 @@ public class AdminService {
         adminRepository.save(adminModel);
         return "Se creo el usuario";
     }
+
+    public void eliminar(int id){
+        adminRepository.deleteById(id);
+    }
 }

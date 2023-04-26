@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NamedEntityGraph
 public class MessageDbo {
-    private int idMessage;
+    private Integer idMessage;
     private String messageText;
     private CarModel car;
     private ClientModel client;

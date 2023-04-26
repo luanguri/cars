@@ -15,8 +15,8 @@ public class ScoreModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_score")
-    private int idScore;
-    private int stars;
+    private Integer idScore;
+    private Integer stars;
 
     /*@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_reservation", nullable = false, unique = true)

@@ -15,12 +15,12 @@ public class AdminModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_admin")
-    private int idAdmin;
+    private Integer idAdmin;
     @Column(length = 45)
     private String email;
     @Column(length = 45)
     private String password;
     //@Column(length = 3)
-    private byte age;
+    private Byte age;
 
 }

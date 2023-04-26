@@ -9,9 +9,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NamedEntityGraph
 public class AdminDbo {
-    private int idAdmin;
+    private Integer idAdmin;
     private String email;
     private String password;
-    private byte age;
+    private Byte age;
 
 }

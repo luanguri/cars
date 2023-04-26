@@ -16,7 +16,7 @@ public class MessageModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_message")
-    private int idMessage;
+    private Integer idMessage;
     @Column(name="message_text",length = 250)
     private String messageText;
 

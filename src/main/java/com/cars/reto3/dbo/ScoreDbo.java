@@ -10,8 +10,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NamedEntityGraph
 public class ScoreDbo {
-    private int idScore;
-    private float value;
-    private ReservationModel reservation;
+    private Integer idScore;
+    private Integer stars;
+    //private ReservationModel reservation;
 
 }

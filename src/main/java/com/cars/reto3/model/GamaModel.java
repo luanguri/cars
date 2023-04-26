@@ -16,7 +16,7 @@ public class GamaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_gama")
-    private int idGama;
+    private Integer idGama;
     @Column(length = 45)
     private String name;
     @Column(length = 250)
