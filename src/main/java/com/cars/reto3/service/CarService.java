@@ -54,7 +54,7 @@ public class CarService {
                 car.setReservations(carInput.getReservations());
             }
             if(carInput.getYear()!=null){
-                car.setBrand(carInput.getBrand());
+                car.setYear(carInput.getYear());
             }
             carRepositorio.save(car);
         }
